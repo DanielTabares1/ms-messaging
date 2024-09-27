@@ -1,0 +1,23 @@
+package com.daniel.ms_messaging.infrastructure.input.rest;
+
+import com.daniel.ms_messaging.application.handler.ISendSmsHandler;
+import com.daniel.ms_messaging.domain.model.OrderMessage;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/sms")
+public class SmsController {
+
+    public final ISendSmsHandler sendSmsHandler;
+
+    @PostMapping
+    public ResponseEntity<String> sendSms(OrderMessage orderMessage){
+        sendSmsHandler.sendSms(orderMessage);
+        return ResponseEntity.ok("SMS successfully sent with code: " + orderMessage.getOrderValidationCode());
+    }
+}
