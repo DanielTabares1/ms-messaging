@@ -11,7 +11,6 @@ public class SendSmsUseCase implements ISendSmsServicePort {
         this.sendSmsPersistencePort = sendSmsPersistencePort;
     }
 
-
     @Override
     public boolean sendSms(OrderMessage orderMessage) {
         return sendSmsPersistencePort.sendSms(orderMessage);

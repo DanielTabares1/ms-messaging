@@ -5,18 +5,19 @@ import com.daniel.ms_messaging.domain.model.OrderMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/sms")
+@RequestMapping("/api/v1/employee/sms")
 public class SmsController {
 
     public final ISendSmsHandler sendSmsHandler;
 
     @PostMapping
-    public ResponseEntity<String> sendSms(OrderMessage orderMessage){
+    public ResponseEntity<String> sendSms(@RequestBody OrderMessage orderMessage){
         sendSmsHandler.sendSms(orderMessage);
         return ResponseEntity.ok("SMS successfully sent with code: " + orderMessage.getOrderValidationCode());
     }
