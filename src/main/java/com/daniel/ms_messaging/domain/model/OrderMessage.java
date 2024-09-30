@@ -4,17 +4,26 @@ public class OrderMessage {
     private String clientPhoneNumber;
     private String restaurantName;
     private String orderValidationCode;
+    private long orderId;
 
 
     public OrderMessage() {
     }
 
-    public OrderMessage(String clientPhoneNumber, String restaurantName, String orderValidationCode) {
+    public OrderMessage(String clientPhoneNumber, String restaurantName, String orderValidationCode, long orderId) {
         this.clientPhoneNumber = clientPhoneNumber;
         this.restaurantName = restaurantName;
         this.orderValidationCode = orderValidationCode;
     }
 
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
 
     public String getClientPhoneNumber() {
         return clientPhoneNumber;
